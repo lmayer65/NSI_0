@@ -1,4 +1,4 @@
-# NSI_0
+# NSI_T
 
 Programme de NSI de Terminale du lycée Saint-Jean à Limoges
 - Cours
