@@ -20,7 +20,7 @@ class Carte:
 
     """Renvoie la couleur de la Carte (parmi pique, coeur, carreau, trefle"""
     def getCouleur(self):
-        return ['pique', 'coeur', 'carreau', 'trefle' ][self.Couleur]
+        return ['coeur', 'carreau', 'trefle', 'pique' ][self.Couleur]
 
 class PaquetDeCarte:
     def __init__(self):
@@ -28,8 +28,9 @@ class PaquetDeCarte:
 
     """Remplit le paquet de cartes"""
     def remplir(self):
+    # Respecter IMPERATIVEMENT l'ordre des couleurs de la méthode `getCouleur(self)` 
 	#A compléter
 
     """Renvoie la Carte qui se trouve à la position donnée"""
     def getCarteAt(self, pos):
-        #A compléter
+    #A compléter
