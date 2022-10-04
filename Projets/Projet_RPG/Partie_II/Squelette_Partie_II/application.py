@@ -91,13 +91,12 @@ class Window(pyglet.window.Window):
         samples: int = 4,
         enable_polling: bool = True
     ):
-        
-        self.headless = False
-        
         # In certain environments we can't have antialiasing/MSAA enabled.
         # Detect replit environment
         if os.environ.get("REPL_ID"):
             antialiasing = False
+            
+        self.headless = False
 
         config = None
         # Attempt to make window with antialiasing
