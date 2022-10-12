@@ -1,0 +1,14 @@
+{ "Orc" : 
+	{
+	"Attack" : 10,
+	"Block" : 0.05,
+	"Defense" : 20,
+	"Dodge" : 0.05,
+	"HitPoints" : 20,
+	"Name" : "Orc",
+	"Parry" : 0.10,
+	"Speed" : 2
+	}
+}
+
+
