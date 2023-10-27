@@ -33,7 +33,7 @@ class My_Game(arcade.Window):
         self.camera = arcade.Camera(SCREEN_WIDTH, SCREEN_HEIGHT)
         
         # Création de la map
-        self.map = Map()
+        self.map = Map(self)
         self.map.setup()
         self.scene = arcade.Scene.from_tilemap(self.map.tile_map)
         self.map.set_collisions()
@@ -54,9 +54,7 @@ class My_Game(arcade.Window):
         ##### A COMPLETER #####
             
         # ATTENTION : avant l'appel au setup(), plantage sinon !!
-        for mob in self.mobs :
-            self.sprites_list.append(mob)
-            mob.setup()
+        
        
         # Gestion des collisions du joueur avec la carte
         self.physics_engine = arcade.PhysicsEngineSimple(self.player, self.map.walls)
@@ -73,8 +71,7 @@ class My_Game(arcade.Window):
         if key == arcade.key.LEFT : # Vers la gauche
             self.player.change_x = -self.player.attributes['Speed']
         ##### A COMPLETER #####
-        elif key == arcade.key.LEFT : # Déciblage d'un monstre
-            self.gui.update()
+        
         
       
     def on_key_release(self, key, modifiers):
@@ -99,7 +96,7 @@ class My_Game(arcade.Window):
             self.player.clicked_mob = clicked_mob[0] # clicked_mob[0] est ciblé par le joueur
      
         # Mise à jour de l'IHM
-        self.gui.update()
+        
       
         
       
