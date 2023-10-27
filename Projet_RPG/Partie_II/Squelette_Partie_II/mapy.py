@@ -5,7 +5,7 @@ from constants import *
 class Map :
     def __init__(self, game) :
         self.tile_map = None
-        self.game = game
+        self.game =game
         
         
     def setup(self) :

@@ -51,13 +51,18 @@ class My_Game(arcade.Window):
         
                    
         # Création de X orcs placés aléatoirement, X au choix :) 
+        # A placer dans la liste 'self.mobs'
         ##### A COMPLETER #####
-            
-        # ATTENTION : avant l'appel au setup(), plantage sinon !!
         
+
+        # ATTENTION : avant l'appel au setup(), plantage sinon !!
+        for mob in self.mobs :
+            self.sprites_list.append(mob)
+            mob.setup()
        
-        # Gestion des collisions du joueur avec la carte
-        self.physics_engine = arcade.PhysicsEngineSimple(self.player, self.map.walls)
+        # Gestion des collisions du joueur avec la carte (si joueur)
+        if self.player :
+            self.physics_engine = arcade.PhysicsEngineSimple(self.player, self.map.walls)
         
         
         # Création de l'IHM (GUI)
@@ -67,14 +72,23 @@ class My_Game(arcade.Window):
 
     
     def on_key_press(self, key, modifiers):
+        # Si pas encore de joueur
+        if not self.player :
+            return 
+
         # Mouvements du joueur
         if key == arcade.key.LEFT : # Vers la gauche
             self.player.change_x = -self.player.attributes['Speed']
         ##### A COMPLETER #####
-        
+        elif key == arcade.key.LEFT : # Déciblage d'un monstre
+            self.gui.update()
         
       
     def on_key_release(self, key, modifiers):
+        # Si pas encore de joueur
+        if not self.player :
+            return
+        
         # Fin de mouvement du joueur
         if key == arcade.key.LEFT :
             self.player.change_x = 0
@@ -84,6 +98,10 @@ class My_Game(arcade.Window):
         
         
     def on_mouse_press(self, x, y, button, modifiers) :
+        # Si pas encore de joueur
+        if not self.player :
+            return
+        
         # Attention à transformer les coordonnées relatives en coordonnées absolues
         new_x = 0       ##### A MODIFIER #####
         new_y = 0       ##### A MODIFIER #####
@@ -96,11 +114,15 @@ class My_Game(arcade.Window):
             self.player.clicked_mob = clicked_mob[0] # clicked_mob[0] est ciblé par le joueur
      
         # Mise à jour de l'IHM
-        
+        self.gui.update()
       
         
       
     def on_update(self, delta_time):
+        # Si pas encore de joueur
+        if not self.player :
+            return
+        
         # Déplace le joueur, gère les collisions avec les objets de la map
         self.physics_engine.update() 
              
@@ -116,6 +138,10 @@ class My_Game(arcade.Window):
     
     # Permet de centrer la caméra sur le joueur
     def center_camera_to_player(self):
+        # Si pas encore de joueur
+        if not self.player :
+            return
+        
         screen_center_x = self.player.center_x - self.camera.viewport_width//2
         screen_center_y = self.player.center_y - self.camera.viewport_height//2
   
